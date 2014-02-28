@@ -1,3 +1,5 @@
+/build/
+
 # Object files
 *.o
 *.ko
@@ -16,3 +18,8 @@
 *.exe
 *.out
 *.app
+
+# VS
+*.idb
+*.ilk
+*.pdb
