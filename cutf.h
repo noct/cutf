@@ -323,6 +323,8 @@ size_t cutf_distance(uint8_t* first, uint8_t* last)
 	return dist;
 }
 
+#define PTR_DIFF_(it, out)   (size_t)(it - out)
+
 size_t cutf_16to8(uint16_t* start, uint16_t* end, uint8_t* out)
 {
 	uint8_t* it = out;
@@ -337,7 +339,7 @@ size_t cutf_16to8(uint16_t* start, uint16_t* end, uint8_t* out)
 		}
 		it = cutf_append(cp, it);
 	}
-	return it - out;
+	return PTR_DIFF_(it,out);
 }
 
 size_t cutf_8to16(uint8_t* start, uint8_t* end, uint16_t* out)
@@ -352,7 +354,7 @@ size_t cutf_8to16(uint8_t* start, uint8_t* end, uint16_t* out)
 			*(it++) = (uint16_t)(cp);
 		}
 	}
-	return it - out;
+	return PTR_DIFF_(it, out);
 }
 
 size_t cutf_32to8(uint32_t* start, uint32_t* end, uint8_t* out)
@@ -361,7 +363,7 @@ size_t cutf_32to8(uint32_t* start, uint32_t* end, uint8_t* out)
 	for(; start != end; ++start) {
 		it = cutf_append(*start, it);
 	}
-	return it - out;
+	return PTR_DIFF_(it, out);
 }
 
 size_t cutf_8to32(uint8_t* start, uint8_t* end, uint32_t* out)
@@ -370,7 +372,7 @@ size_t cutf_8to32(uint8_t* start, uint8_t* end, uint32_t* out)
 	for(; start < end; ++it) {
 		*it = cutf_next(&start);
 	}
-	return it - out;
+	return PTR_DIFF_(it, out);
 }
 
 size_t cutf_replace_invalid(uint8_t* start, uint8_t* end, uint8_t* out, size_t limit, uint32_t replacement)
@@ -401,8 +403,10 @@ size_t cutf_replace_invalid(uint8_t* start, uint8_t* end, uint8_t* out, size_t l
 				break;
 		}
 	}
-	return it - out;
+	return PTR_DIFF_(it, out);
 }
+
+#undef PTR_DIFF_
 
 size_t cutf_default_replace_invalid(uint8_t* start, uint8_t* end, uint8_t* out, size_t limit)
 {

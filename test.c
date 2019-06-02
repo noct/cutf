@@ -12,7 +12,7 @@ uint8_t* readfile(const char* path, size_t* size)
 	if(file) {
 		size_t file_size = 0;
 		fseek(file, 0L, SEEK_END);
-		file_size = ftell(file);
+		file_size = (size_t)ftell(file);
 		fseek(file, 0L, SEEK_SET);
 		result = (uint8_t*)calloc(file_size, sizeof(uint8_t));
 		*size = fread(result, sizeof(uint8_t), file_size, file);
@@ -62,7 +62,7 @@ void testfile(const char* path)
 		}
 
 		count = cutf_distance(original, original+size);
-		printf("  # of cp: %d\n", count);
+		printf("  # of cp: %zd\n", count);
 		if(count) {
 			roundtrip_16(original, copy, size, count);
 			roundtrip_32(original, copy, size, count);
