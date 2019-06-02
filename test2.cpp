@@ -1,7 +1,4 @@
 ﻿#include "cutf.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 #define ok(statement)                                       \
     if( !(statement) )                                      \
