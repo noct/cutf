@@ -79,7 +79,9 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
-  <ImportGroup Label="Shared" />
+  <ImportGroup Label="Shared">
+    <Import Project="cutf_shared.vcxitems" Label="Shared" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -138,12 +140,6 @@
     <IntDir>..\obj\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
     <RemoteProjectDir>$(RemoteRootDir)</RemoteProjectDir>
   </PropertyGroup>
-  <ItemGroup>
-    <ClInclude Include="..\cutf.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\test.cpp" />
-  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

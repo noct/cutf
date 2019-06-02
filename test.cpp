@@ -1,4 +1,4 @@
-#define CUTF_IMPLEMENTATION 1
+﻿#define CUTF_IMPLEMENTATION 1
 #include "cutf.h"
 
 #include <stdio.h>
@@ -36,7 +36,7 @@ int roundtrip_16(uint8_t* original, uint8_t* copy, size_t size, size_t count)
     size_t written;
     uint16_t* temp = (uint16_t*)calloc(count*2, sizeof(uint16_t));
     written = cutf_8to16(original, original+size, temp);
-    written = cutf_16to8(temp, temp+written, copy);
+    written = cutf_16to8(temp, temp+written, copy, size * 2);
     free(temp);
     return check("roundtrip_16", original, copy, size);
 }
@@ -46,7 +46,7 @@ int roundtrip_32(uint8_t* original, uint8_t* copy, size_t size, size_t count)
     size_t written;
     uint32_t* temp = (uint32_t*)calloc(count, sizeof(uint32_t));
     written = cutf_8to32(original, original+size, temp);
-    written = cutf_32to8(temp, temp+written, copy);
+    written = cutf_32to8(temp, temp+written, copy, size * 2);
     free(temp);
     return check("roundtrip_32", original, copy, size);
 }
@@ -93,18 +93,22 @@ int testfile(const char* path, bool expectInvalidChars = false)
     }
 }
 
+int simpleStringTest();
+
 int main(int argc, char** argv)
 {
     int r = 0;
     #ifdef _WIN32
-        printf("[windows]\n");
+        printf("[windows] sizeof(wchar_t)=%zd\n", sizeof(wchar_t));
     #else
-        printf("[linux]\n");
+        printf("[linux] sizeof(wchar_t)=%zd\n", sizeof(wchar_t));
     #endif
 
+    r |= simpleStringTest();
     r |= testfile("utf8_invalid.txt", true);
     r |= testfile("quickbrown.txt");
     r |= testfile("UTF-8-demo.txt");
     r |= testfile("big.txt");
+
     return r;
 }

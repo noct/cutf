@@ -7,7 +7,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_cutf", "test_cutf.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_cutf_linux", "test_cutf_linux.vcxproj", "{58238E6B-4285-44BF-9190-577ED170EBAD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cutf_shared", "cutf_shared.vcxitems", "{7E2A62F6-F426-452C-A6EB-0582EAAF616A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		cutf_shared.vcxitems*{1aaa6d06-9ca0-4eb1-95c7-a1b6b946b520}*SharedItemsImports = 4
+		cutf_shared.vcxitems*{58238e6b-4285-44bf-9190-577ed170ebad}*SharedItemsImports = 4
+		cutf_shared.vcxitems*{7e2a62f6-f426-452c-a6eb-0582eaaf616a}*SharedItemsImports = 9
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
 		Debug|ARM64 = Debug|ARM64
