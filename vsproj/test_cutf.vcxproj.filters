@@ -4,6 +4,6 @@
     <ClInclude Include="..\cutf.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\test.c" />
+    <ClCompile Include="..\test.cpp" />
   </ItemGroup>
 </Project>
