@@ -173,6 +173,11 @@ static enum cutf_error cutf_validate_next(uint8_t** it, uint8_t* end)
     return cutf_get_next(it, end, 0);
 }
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 /// API
 ////////////////////////////////////////////////////////////////////////////////
@@ -444,6 +449,7 @@ size_t wchartoutf8(const wchar_t* s, size_t inSize, char* out, size_t outsize)
 }
 
 #ifdef __cplusplus
+};
 
 std::wstring utf8towide(const char* s)
 {
