@@ -58,7 +58,7 @@ void testfile(const char* path)
 		if(!cutf_is_valid(original, original+size)) {
 			cutf_default_replace_invalid(original, original+size, copy, size);
 			memcpy(original, copy, size);
-			printf("  invalid\n", path);
+			printf("  file contains invalid utf-8 characters\n");
 		}
 
 		count = cutf_distance(original, original+size);
@@ -71,7 +71,7 @@ void testfile(const char* path)
 		free(copy);
 		free(original);
 	} else {
-		printf("  file read failed\n", path);
+		printf("  file read failed");
 	}
 }
 
