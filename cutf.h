@@ -8,6 +8,9 @@
 // Can be compiled as .C if necessary.
 #ifdef __cplusplus
 #include <string>
+
+extern "C"
+{
 #endif
 
 int      cutf_is_valid(uint8_t* start, uint8_t* end);
@@ -40,6 +43,7 @@ size_t utf8towchar(const char* s, size_t inSize, wchar_t* out, size_t bufSize);
 size_t wchartoutf8(const wchar_t* s, size_t inSize, char* out, size_t outsize);
 
 #ifdef __cplusplus
+};
 
 std::wstring utf8towide(const char* s);
 std::wstring utf8towide(const std::string& s);
