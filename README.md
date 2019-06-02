@@ -1,7 +1,14 @@
 cutf
 ====
 
-Minimal C port of UTF8-CPP
+utf-8 <> wchar_t conversion functions for C and C++
+
+
+Integration
+===========
+
+Include cutf.h & cutf.cpp into your project, and use it.
+If your project is C based - compile .cpp file as .c.
 
 
 Testing
